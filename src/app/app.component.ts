@@ -1,10 +1,21 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+	selector: 'body',
+	templateUrl: './app.component.html'
 })
 export class AppComponent {
-  title = 'app works!';
+
+	public disabled: boolean = false;
+    public status: { isopen: boolean } = { isopen: false };
+
+    public toggled(open: boolean): void {
+		console.log('Dropdown is now: ', open);
+    }
+
+    public toggleDropdown($event: MouseEvent): void {
+		$event.preventDefault();
+		$event.stopPropagation();
+		this.status.isopen = !this.status.isopen;
+    }
 }
